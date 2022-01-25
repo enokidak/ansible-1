@@ -1,0 +1,27 @@
+- hosts: targets
+  remote_user: kota
+  tasks:
+    - name: change hostname per server
+      hostname: name={{ item }}
+      with_items:
+      - hkm01
+      - hkw01
+      - hkw02
+
+    - name: change netplan config.yaml
+      copy:
+        src: /etc/netplan/99_config.yaml
+        dest: 99_config.yaml
+        with_items:
+        - hkm01
+        - hkw01
+        - hkw02
+
+    - name: change /boot/firmware/config.txt file
+      copy: 
+        src: /boot/firmware/config.txt
+        dest: /boot/firmware/config.txt
+        with_items:
+        - hkm01
+        - hkw01
+        - hkw02

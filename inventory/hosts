@@ -1,0 +1,7 @@
+[raspi]
+hkm01 ansible_host=192.168.13.101
+hkw01 ansible_host=192.168.13.102
+hkw02 ansible_host=192.168.13.103
+
+[azure]
+mgmt ansible_host=10.0.2.4

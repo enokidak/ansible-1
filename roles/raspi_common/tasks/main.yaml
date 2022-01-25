@@ -1,0 +1,8 @@
+#ssh設定
+#hostname書き換え
+#etc/netplan/99_config.yaml
+#/boot/firmware/config.txt
+#iptables
+#cgroup
+#
+---
