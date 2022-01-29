@@ -1,0 +1,19 @@
+---
+- name: Upgrade all package
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install apt packages
+  apt:
+    name:
+      - vim
+      - curl
+      - git
+      - docker-compose
+      - fonts-powerline
+      - tree
+      - tmux
+      - unzip
+      - figlet
+    state: latest

@@ -5,3 +5,6 @@ hkw02 ansible_host=192.168.13.103
 
 [azure]
 mgmt ansible_host=10.0.2.4
+
+[localhost]
+127.0.0.1

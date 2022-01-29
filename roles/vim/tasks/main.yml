@@ -1,0 +1,6 @@
+---
+- name: copy .vimrc
+  copy:
+    src: ../files/.vimrc
+    dest: /home/enkuser/
+    mode: 0755

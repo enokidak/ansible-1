@@ -1,0 +1,15 @@
+---
+- name: vm-mng playbook
+  hosts: localhost
+  remote_user: enkuser
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  roles:
+    - role: apt_packages
+      tags: apt_packages
+    - role: fish_shell
+      tags: fish_shell
+    - role: vim
+      tags: vim

@@ -1,0 +1,66 @@
+- name: Add fish repository from PPA and install its signing key.
+  apt_repository:
+    repo: 'ppa:fish-shell/release-3'
+    
+- name: Install fish, fzf
+  apt:
+    name: 
+      - fish
+      - fzf
+      - powerline
+      - fonts-powerline
+      - fontconfig
+    update_cache: yes
+    state: latest
+
+- name: Exec fish after bash
+  lineinfile:
+    dest: /home/enkuser/.bashrc
+    line: exec fish
+
+- name: Install fisher
+  get_url:
+    url: https://git.io/fisher
+    dest: /home/enkuser/.config/fish/functions/fisher.fish
+
+#　fisherのコマンドが見つからず実行できない
+#- name: Install fisher theme
+#  shell: fish -lc "fisher install {{ item }}"
+#  with_items:
+#    - oh-my-fish/theme-bobthefish
+#    - oh-my-fish/theme-mars
+#    - h-matsuo/fish-color-scheme-switcher
+#    - jethrokuan/fzf
+#    - jethrokuan/z
+#    - 0rax/fish-bd
+
+#- name: Install powerline
+#  get_url:
+#    url: "{{ item.url }}"
+#    dest: "{{ item.dest}}"
+#  with_items:
+#   - { url: "https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf", dest: "/usr/share/fonts" }
+#   - { url: "https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf", dest: "/etc/fonts/conf.d/" }
+
+#- name: Install powerline-fonts
+#  shell: sh https://raw.githubusercontent.com/powerline/fonts/master/install.sh
+
+#- name: Download install.sh
+#  get_url:
+#    url: https://raw.githubusercontent.com/powerline/fonts/master/install.sh
+#    dest: /tmp
+#    mode: 0755
+
+#- name: execute install.sh
+#  shell: ./install.sh
+#  args:
+#    chdir: /tmp/
+
+#- name: Setup powerline
+#  lineinfile:
+#    dest: /home/enkuser/.config/fish/config.fish
+#    line: "{{ item }}"
+#  with_items:
+#    - set fish_function_path $fish_function_path "/usr/share/powerline/bindings/fish"
+#    - powerline-setup
+
