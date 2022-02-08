@@ -1,0 +1,17 @@
+- name: Ensure user bob is present
+  win_user:
+    name: bob
+    password: B0bP4ssw0rd
+    state: present
+    groups:
+      - Users
+#- name: Create users
+#  win_user:
+#    name: "{{ item.name }}"
+#    password: hogehoge123!
+#    state: present
+#    groups: Administrators
+#  with_items:
+#    - { name: "user1", groups: ["Users"]}
+#    - { name: "hogeuser", groups: ["User"]}
+#    - { name: "ansible_admin", groups: ["Administrators"]}

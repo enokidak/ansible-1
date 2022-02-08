@@ -1,0 +1,18 @@
+---
+- name: Install tfenv
+  git:
+    repo: https://github.com/tfutils/tfenv.git
+    dest: /usr/local/bin/.tfenv
+    clone: yes
+    update: yes
+  become: yes
+ 
+- name: export path
+  lineinfile:
+    dest: /home/i4admin/.bashrc
+    line: export PATH="/usr/local/bin/.tfenv/bin:$PATH"
+
+- name: Install terraform
+  shell: |
+    tfenv install 0.14.6
+    tfenv use 0.14.6

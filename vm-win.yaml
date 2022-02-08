@@ -1,0 +1,15 @@
+---
+- name: vm-windows playbook
+  hosts: localhost
+  remote_user: i4admin
+  #become: yes
+  become_user: root
+  become_method: sudo
+
+  roles:
+    - role: apt_packages
+      tags: apt_packages
+#    - role: windows_setup
+#      tags: windows_setup
+      role: dev_tools
+      tags: dev_tools
