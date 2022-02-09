@@ -3,13 +3,18 @@
   hosts: localhost
   remote_user: i4admin
   #become: yes
+  become: true
   become_user: root
   become_method: sudo
 
   roles:
     - role: apt_packages
       tags: apt_packages
+    - role: ubuntu_user 
+      tags: ubuntu_user
+    - role: dev_tools
+      tags: dev_tools
+
+
 #    - role: windows_setup
 #      tags: windows_setup
-      role: dev_tools
-      tags: dev_tools

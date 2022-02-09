@@ -12,7 +12,10 @@
     dest: /home/i4admin/.bashrc
     line: export PATH="/usr/local/bin/.tfenv/bin:$PATH"
 
+    #- name: reflect .bash_profile
+    #  shell: source /home/i4admin/.bashrc
+
 - name: Install terraform
   shell: |
-    tfenv install 0.14.6
-    tfenv use 0.14.6
+    /usr/local/bin/.tfenv/bin/tfenv install 1.1.5
+    /usr/local/bin/.tfenv/bin/tfenv use 1.1.5
