@@ -14,7 +14,5 @@
       tags: ubuntu_user
     - role: dev_tools
       tags: dev_tools
-
-
 #    - role: windows_setup
 #      tags: windows_setup
