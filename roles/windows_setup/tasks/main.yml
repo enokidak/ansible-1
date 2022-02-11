@@ -1,18 +1,38 @@
-#- name: Ensure user bob is present
-#  win_user:
-#    name: bob
-#    password: B0bP4ssw0rd
-#    state: present
-#    groups:
-#      - Users
 - name: Create users
   win_user:
     name: "{{ item.name }}"
     password: hogehoge123!
     state: present
-    groups: Administrators
+    groups: "{{ item.groups }}"
   with_items:
-    - { name: "Kota.Enokida", groups: ["Administrators"]}
-    - { name: "Ryota.Tanida", groups: ["Administrators"]}
-    - { name: "Masaki.Gogami", groups: ["Administrators"]}
-    - { name: "Ryohei.Ito", groups: ["Administrators"]}
+    - { name: "Test.User1", groups: ["Administrators"]}
+    - { name: "Test.User2", groups: ["Administrators"]}
+
+- name: Setup Timezones
+  win_timezone:
+    timezone: "Tokyo Standard Time"
+
+- name: Sync local time
+  raw: Set-Date (Invoke-WebRequest -Uri https://ntp-a1.nict.go.jp/cgi-bin/time).Headers.Date
+
+- name: Create shared folder
+  win_file:
+    path: "C:/shares/documents"
+    state: directory
+
+- name: Allow public share folder
+  win_share:
+    name: documents
+    description: Shared documents
+    state: present    
+    path: "C:/shares/documents"
+    full: Administrators,Ansible
+
+- name: Setup registory key
+  win_regedit:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    data: "{{ item.data }}"
+    datatype: "{{ item.datatype|default('dword') }}"
+  with_items:
+    - { key: 'HKCU:\SOFTWARE\Microsoft\ServerManager', value: DoNotOpenServerManagerAtLogon, data: 1}
