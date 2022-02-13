@@ -1,6 +1,7 @@
 ---
 - name: vm-windows playbook
   hosts: windows
+  gather_facts: no
 #  remote_user: i4admin
 #  become: true
 #  become_user: root
@@ -9,3 +10,6 @@
   roles:
     - role: windows_setup
       tags: windows_setup
+    - role: win_dev_tools
+      tags: win_dev_tools
+

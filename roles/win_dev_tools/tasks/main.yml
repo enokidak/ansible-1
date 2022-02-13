@@ -1,2 +1,13 @@
 ---
-# tasks file for roles/win_dev_tools
+- name: Ensure 7-Zip is installed via Chocolatey
+  win_chocolatey:
+    name:
+    - 7zip
+    - vscode
+    - git
+    - terraform
+    - azure-cli
+      #- wsl-ubuntu-2004
+
+    state: present
+    state: latest
