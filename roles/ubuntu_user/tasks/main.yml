@@ -12,10 +12,4 @@
       - internship
     state: present
   with_items:
-    - { user: Takashi.Masuda, password: internship2022! }
-    - { user: Kota.Enokida, password: internship2022! }
-    - { user: Ryota.Tanida, password: internship2022! } 
-    - { user: Masaki.Gogami, password: internship2022! }
-    - { user: Ryohei.Ito, password: internship2022! }
-    - { user: Takumi.Kakiguchi, password: internship2022! } 
-    - { user: Shogo.Chino, password: internship2022! } 
+    - { user: Test.User, password: testtest }
